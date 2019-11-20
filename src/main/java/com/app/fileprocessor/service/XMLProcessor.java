@@ -45,9 +45,11 @@ public class XMLProcessor extends FileProcessor {
 
                 List<Attribute> newAttrs = new ArrayList<>();
                 Iterator<Attribute> existingAttrs = elemEvent.getAttributes();
+                //loop through attributes
                 while (existingAttrs.hasNext()) {
                     Attribute existing = existingAttrs.next();
-                    if (existing.getValue().contains("trace")) {
+                    //replace text for attributes that contain the search text
+                    if (existing.getValue().contains(searchString)) {
                         newAttrs.add(eventFactory.createAttribute(existing.getName().getLocalPart(), replaceAll(existing.getValue())));
                     } else {
                         newAttrs.add(existing);
@@ -57,6 +59,7 @@ public class XMLProcessor extends FileProcessor {
                 writer.add(eventFactory.createStartElement(elemEvent.getName(), newAttrs.iterator(), elemEvent.getNamespaces()));
 
             }
+            //Copy unchanged events as is
             if (!isChanged) {
                 writer.add(event);
             }
