@@ -7,6 +7,6 @@ The program accepts three parameters:
   * Search String
   * Replace String
   
-Takes input and output file path as standard input (e.g.: C://input.txt; C://output.txt)
+Takes input and output file path as standard input (e.g.: C:\input.txt; C:\output.txt)
 
 (Note: Does not ignore case while searching)
